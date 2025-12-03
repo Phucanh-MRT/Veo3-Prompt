@@ -1,4 +1,3 @@
-
 import React, { useRef } from 'react';
 import { CharacterProfile } from '../types';
 import { UserIcon } from './icons/UserIcon';
@@ -61,13 +60,13 @@ export const CharacterManager: React.FC<CharacterManagerProps> = ({ profiles, on
     return (
         <div className="space-y-4">
             <div>
-                <h3 className="text-base font-anton uppercase tracking-wider text-[#b9f2ff]/80 mb-2">Nhân vật (Tùy chọn)</h3>
-                <p className="text-xs text-[#b9f2ff]/60 mb-3">
+                <h3 className="text-base font-anton uppercase tracking-wider text-slate-700 dark:text-[#b9f2ff]/80 mb-2">Nhân vật (Tùy chọn)</h3>
+                <p className="text-xs text-slate-500 dark:text-[#b9f2ff]/60 mb-3">
                     Tải lên hình ảnh và/hoặc thêm mô tả cho nhân vật để AI tạo ra các chi tiết hình ảnh nhất quán và chính xác.
                 </p>
                 <div className="space-y-3">
                     {profiles.map((profile, index) => (
-                        <div key={profile.id} className="flex items-start space-x-3 bg-[#0d0d0d]/40 p-3 rounded-lg border border-[#b9f2ff]/10">
+                        <div key={profile.id} className="flex items-start space-x-3 bg-slate-100 dark:bg-[#0d0d0d]/40 p-3 rounded-lg border border-slate-300 dark:border-[#b9f2ff]/10">
                             <div className="flex-shrink-0 w-20 h-20">
                                 <input
                                     type="file"
@@ -81,7 +80,7 @@ export const CharacterManager: React.FC<CharacterManagerProps> = ({ profiles, on
                                     type="button"
                                     onClick={() => fileInputRefs.current[index]?.click()}
                                     disabled={disabled}
-                                    className="w-full h-full rounded-md border-2 border-dashed border-[#b9f2ff]/30 hover:border-[#b9f2ff] flex items-center justify-center text-[#b9f2ff]/60 hover:text-[#b9f2ff] transition-colors bg-cover bg-center"
+                                    className="w-full h-full rounded-md border-2 border-dashed border-slate-300 dark:border-[#b9f2ff]/30 hover:border-sky-500 dark:hover:border-[#b9f2ff] flex items-center justify-center text-slate-400 dark:text-[#b9f2ff]/60 hover:text-sky-500 dark:hover:text-[#b9f2ff] transition-colors bg-cover bg-center"
                                     style={{ backgroundImage: profile.image ? `url(data:${profile.mimeType};base64,${profile.image})` : 'none' }}
                                 >
                                     {!profile.image && <ImageIcon className="w-8 h-8" />}
@@ -91,7 +90,7 @@ export const CharacterManager: React.FC<CharacterManagerProps> = ({ profiles, on
                             <div className="flex-grow space-y-2">
                                 <label htmlFor={`character-name-${profile.id}`} className="sr-only">Tên nhân vật</label>
                                 <div className="relative">
-                                     <UserIcon className="w-4 h-4 absolute top-1/2 left-3 -translate-y-1/2 text-[#b9f2ff]/50" />
+                                     <UserIcon className="w-4 h-4 absolute top-1/2 left-3 -translate-y-1/2 text-slate-400 dark:text-[#b9f2ff]/50" />
                                     <input
                                         type="text"
                                         id={`character-name-${profile.id}`}
@@ -99,7 +98,7 @@ export const CharacterManager: React.FC<CharacterManagerProps> = ({ profiles, on
                                         value={profile.name}
                                         onChange={(e) => updateProfile(profile.id, { name: e.target.value })}
                                         disabled={disabled}
-                                        className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md py-2 pl-9 pr-3 text-sm"
+                                        className="w-full bg-white dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md py-2 pl-9 pr-3 text-sm text-slate-900 dark:text-white"
                                     />
                                 </div>
                                  <textarea
@@ -109,14 +108,14 @@ export const CharacterManager: React.FC<CharacterManagerProps> = ({ profiles, on
                                     onChange={(e) => updateProfile(profile.id, { description: e.target.value })}
                                     disabled={disabled}
                                     rows={3}
-                                    className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md p-2 text-sm resize-y"
+                                    className="w-full bg-white dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 text-sm resize-y text-slate-900 dark:text-white"
                                 />
                             </div>
                              <button
                                 type="button"
                                 onClick={() => removeProfile(profile.id)}
                                 disabled={disabled}
-                                className="p-2 text-[#b9f2ff]/60 hover:text-red-400 disabled:opacity-50 transition-colors self-start"
+                                className="p-2 text-slate-400 dark:text-[#b9f2ff]/60 hover:text-red-500 dark:hover:text-red-400 disabled:opacity-50 transition-colors self-start"
                                 title="Xóa nhân vật"
                             >
                                 <TrashIcon className="w-5 h-5" />
@@ -129,7 +128,7 @@ export const CharacterManager: React.FC<CharacterManagerProps> = ({ profiles, on
                 type="button"
                 onClick={addProfile}
                 disabled={disabled}
-                className="w-full text-sm bg-[#1a1a40] border border-[#b9f2ff]/20 rounded-md p-2 hover:bg-[#b9f2ff]/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300"
+                className="w-full text-sm bg-white dark:bg-[#1a1a40] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 hover:bg-slate-50 dark:hover:bg-[#b9f2ff]/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300 text-slate-700 dark:text-white"
             >
                 + Thêm nhân vật
             </button>

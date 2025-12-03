@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Sidebar } from './components/Sidebar';
@@ -27,7 +28,7 @@ const initialSidebarInputs: FormInputs = {
   controlMode: 'duration',
 };
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const [scenes, setScenes] = useState<Scene[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -246,7 +247,7 @@ const App: React.FC = () => {
   }, [scenes, sidebarInputs, saveHistory]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0d0d0d] text-[#b9f2ff]">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#0d0d0d] dark:text-[#b9f2ff] transition-colors duration-300">
       <Header onOpenSettings={() => setIsSettingsOpen(true)} />
       
       <SettingsModal 
@@ -280,6 +281,14 @@ const App: React.FC = () => {
       <Footer />
     </div>
   );
+};
+
+const App: React.FC = () => {
+    return (
+        <ThemeProvider>
+            <AppContent />
+        </ThemeProvider>
+    );
 };
 
 export default App;

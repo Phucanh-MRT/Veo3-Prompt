@@ -113,17 +113,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <aside className="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
-      <div className="sticky top-24 bg-[#1a1a40]/20 border border-[#b9f2ff]/10 rounded-lg p-6 backdrop-blur-md max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar">
+      <div className="sticky top-24 bg-white/50 dark:bg-[#1a1a40]/20 border border-slate-200 dark:border-[#b9f2ff]/10 rounded-lg p-6 backdrop-blur-md max-h-[calc(100vh-8rem)] overflow-y-auto custom-scrollbar shadow-sm dark:shadow-none transition-colors duration-300">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Section: Description */}
           <div>
-            <h2 className="text-2xl font-anton uppercase tracking-wide mb-2">Tổng Quan Video</h2>
-            <p className="text-sm text-[#b9f2ff]/70 mb-4">
+            <h2 className="text-2xl font-anton uppercase tracking-wide mb-2 text-slate-800 dark:text-[#b9f2ff]">Tổng Quan Video</h2>
+            <p className="text-sm text-slate-500 dark:text-[#b9f2ff]/70 mb-4">
               Mô tả câu chuyện tổng thể hoặc nhập một ý tưởng ngắn gọn.
             </p>
             <div className="relative">
               <textarea
-                className="w-full h-32 bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md p-3 text-sm focus:ring-2 focus:ring-[#b9f2ff] focus:border-[#b9f2ff] transition-colors duration-300 resize-y"
+                className="w-full h-32 bg-slate-50 dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-3 text-sm text-slate-900 dark:text-[#b9f2ff] focus:ring-2 focus:ring-sky-400 dark:focus:ring-[#b9f2ff] focus:border-sky-400 dark:focus:border-[#b9f2ff] transition-colors duration-300 resize-y placeholder-slate-400 dark:placeholder-slate-600"
                 placeholder="VD: Một phi hành gia cô đơn tìm thấy một bông hoa phát sáng trên hành tinh hoang vắng..."
                 value={inputs.description}
                 onChange={(e) => onInputChange({ description: e.target.value })}
@@ -132,7 +132,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <button
                 type="button"
                 onClick={() => setIsSuggesting(!isSuggesting)}
-                className="absolute bottom-3 right-3 p-2 bg-[#1a1a40]/80 rounded-full hover:bg-[#b9f2ff] hover:text-[#0d0d0d] transition-colors text-[#b9f2ff]"
+                className="absolute bottom-3 right-3 p-2 bg-slate-200 dark:bg-[#1a1a40]/80 rounded-full hover:bg-sky-200 dark:hover:bg-[#b9f2ff] hover:text-sky-900 dark:hover:text-[#0d0d0d] transition-colors text-slate-600 dark:text-[#b9f2ff]"
                 title="AI Gợi ý chi tiết câu chuyện"
                 disabled={isLoading}
               >
@@ -142,27 +142,27 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
             {/* Suggestion Popup Area */}
             {isSuggesting && (
-              <div className="mt-3 p-4 bg-[#1a1a40]/50 border border-[#b9f2ff]/20 rounded-md animate-fade-in">
-                <h4 className="text-sm font-bold mb-2 text-[#b9f2ff]">Cài đặt Gợi ý AI</h4>
+              <div className="mt-3 p-4 bg-slate-100 dark:bg-[#1a1a40]/50 border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md animate-fade-in">
+                <h4 className="text-sm font-bold mb-2 text-slate-700 dark:text-[#b9f2ff]">Cài đặt Gợi ý AI</h4>
                 <div className="space-y-3">
                     <div>
-                        <label className="block text-xs mb-1 text-[#b9f2ff]/70">Ngôn ngữ gợi ý</label>
+                        <label className="block text-xs mb-1 text-slate-500 dark:text-[#b9f2ff]/70">Ngôn ngữ gợi ý</label>
                         <select 
                             value={suggestionLanguage}
                             onChange={(e) => setSuggestionLanguage(e.target.value)}
-                            className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded px-2 py-1 text-xs"
+                            className="w-full bg-white dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded px-2 py-1 text-xs text-slate-800 dark:text-[#b9f2ff]"
                         >
                             {suggestionLanguages.map(lang => <option key={lang} value={lang}>{lang}</option>)}
                         </select>
                     </div>
                     <div>
-                        <label className="block text-xs mb-1 text-[#b9f2ff]/70">Thời lượng mong muốn (Tùy chọn)</label>
+                        <label className="block text-xs mb-1 text-slate-500 dark:text-[#b9f2ff]/70">Thời lượng mong muốn (Tùy chọn)</label>
                          <input 
                             type="text"
                             value={suggestionDuration}
                             onChange={(e) => setSuggestionDuration(e.target.value)}
                             placeholder="VD: 2 phút, 30 giây..."
-                            className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded px-2 py-1 text-xs"
+                            className="w-full bg-white dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded px-2 py-1 text-xs text-slate-800 dark:text-[#b9f2ff]"
                         />
                     </div>
                      <div className="flex items-center space-x-2">
@@ -171,15 +171,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             id="suggestion-dialogue"
                             checked={suggestionIncludesDialogue}
                             onChange={(e) => setSuggestionIncludesDialogue(e.target.checked)}
-                            className="rounded border-[#b9f2ff]/20 bg-[#0d0d0d] text-[#b9f2ff] focus:ring-0"
+                            className="rounded border-slate-300 dark:border-[#b9f2ff]/20 bg-white dark:bg-[#0d0d0d] text-sky-500 dark:text-[#b9f2ff] focus:ring-0"
                         />
-                        <label htmlFor="suggestion-dialogue" className="text-xs text-[#b9f2ff]/70">Bao gồm hội thoại mẫu</label>
+                        <label htmlFor="suggestion-dialogue" className="text-xs text-slate-500 dark:text-[#b9f2ff]/70">Bao gồm hội thoại mẫu</label>
                     </div>
                     <button
                         type="button"
                         onClick={handleSuggestStory}
                         disabled={!inputs.description.trim()}
-                        className="w-full bg-[#b9f2ff]/10 hover:bg-[#b9f2ff]/20 text-[#b9f2ff] text-xs py-2 rounded transition-colors"
+                        className="w-full bg-slate-200 dark:bg-[#b9f2ff]/10 hover:bg-slate-300 dark:hover:bg-[#b9f2ff]/20 text-slate-700 dark:text-[#b9f2ff] text-xs py-2 rounded transition-colors"
                     >
                         Tạo chi tiết câu chuyện
                     </button>
@@ -189,8 +189,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
 
           {/* Section: Settings */}
-          <div className="space-y-4 border-t border-[#b9f2ff]/10 pt-4">
-            <h3 className="text-base font-anton uppercase tracking-wider text-[#b9f2ff]/80">Cài Đặt Chi Tiết</h3>
+          <div className="space-y-4 border-t border-slate-200 dark:border-[#b9f2ff]/10 pt-4">
+            <h3 className="text-base font-anton uppercase tracking-wider text-slate-700 dark:text-[#b9f2ff]/80">Cài Đặt Chi Tiết</h3>
             
             {/* Duration Control Mode */}
             <div className="flex items-center space-x-4 mb-2">
@@ -200,9 +200,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                    name="controlMode"
                    checked={inputs.controlMode === 'duration'}
                    onChange={() => handleModeChange('duration')}
-                   className="text-[#b9f2ff] focus:ring-0 bg-transparent border-[#b9f2ff]/40"
+                   className="text-sky-500 dark:text-[#b9f2ff] focus:ring-0 bg-transparent border-slate-400 dark:border-[#b9f2ff]/40"
                  />
-                 <span className={`text-sm ${inputs.controlMode === 'duration' ? 'text-[#b9f2ff]' : 'text-[#b9f2ff]/60'}`}>Theo phút</span>
+                 <span className={`text-sm ${inputs.controlMode === 'duration' ? 'text-slate-900 dark:text-[#b9f2ff]' : 'text-slate-400 dark:text-[#b9f2ff]/60'}`}>Theo phút</span>
                </label>
                <label className="flex items-center space-x-2 cursor-pointer">
                  <input 
@@ -210,29 +210,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
                    name="controlMode"
                    checked={inputs.controlMode === 'scenes'}
                    onChange={() => handleModeChange('scenes')}
-                   className="text-[#b9f2ff] focus:ring-0 bg-transparent border-[#b9f2ff]/40"
+                   className="text-sky-500 dark:text-[#b9f2ff] focus:ring-0 bg-transparent border-slate-400 dark:border-[#b9f2ff]/40"
                  />
-                 <span className={`text-sm ${inputs.controlMode === 'scenes' ? 'text-[#b9f2ff]' : 'text-[#b9f2ff]/60'}`}>Theo số cảnh</span>
+                 <span className={`text-sm ${inputs.controlMode === 'scenes' ? 'text-slate-900 dark:text-[#b9f2ff]' : 'text-slate-400 dark:text-[#b9f2ff]/60'}`}>Theo số cảnh</span>
                </label>
             </div>
 
             {inputs.controlMode === 'duration' ? (
                 <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#b9f2ff]/60 mb-1">Thời lượng ước tính (Phút)</label>
+                    <label className="block text-xs uppercase tracking-wider text-slate-500 dark:text-[#b9f2ff]/60 mb-1">Thời lượng ước tính (Phút)</label>
                     <input
                         type="number"
                         min="0.1"
                         step="0.1"
                         value={inputs.durationInMinutes}
                         onChange={(e) => onInputChange({ durationInMinutes: e.target.value })}
-                        className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md p-2 text-sm"
+                        className="w-full bg-slate-50 dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 text-sm text-slate-900 dark:text-[#b9f2ff]"
                         disabled={isLoading}
                     />
-                    <p className="text-[10px] text-[#b9f2ff]/40 mt-1">Khoảng 7-8 cảnh mỗi phút.</p>
+                    <p className="text-[10px] text-slate-400 dark:text-[#b9f2ff]/40 mt-1">Khoảng 7-8 cảnh mỗi phút.</p>
                 </div>
             ) : (
                 <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#b9f2ff]/60 mb-1">Số lượng cảnh (Chính xác)</label>
+                    <label className="block text-xs uppercase tracking-wider text-slate-500 dark:text-[#b9f2ff]/60 mb-1">Số lượng cảnh (Chính xác)</label>
                     <input
                         type="number"
                         min="1"
@@ -240,19 +240,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         value={inputs.sceneCount}
                         onChange={(e) => onInputChange({ sceneCount: e.target.value })}
                         placeholder="VD: 5, 10, 20..."
-                        className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md p-2 text-sm"
+                        className="w-full bg-slate-50 dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 text-sm text-slate-900 dark:text-[#b9f2ff]"
                         disabled={isLoading}
                     />
-                    <p className="text-[10px] text-[#b9f2ff]/40 mt-1">Mỗi cảnh dài 8 giây.</p>
+                    <p className="text-[10px] text-slate-400 dark:text-[#b9f2ff]/40 mt-1">Mỗi cảnh dài 8 giây.</p>
                 </div>
             )}
 
             <div>
-              <label className="block text-xs uppercase tracking-wider text-[#b9f2ff]/60 mb-1">Phong cách Video</label>
+              <label className="block text-xs uppercase tracking-wider text-slate-500 dark:text-[#b9f2ff]/60 mb-1">Phong cách Video</label>
               <select
                 value={inputs.videoStyle}
                 onChange={(e) => onInputChange({ videoStyle: e.target.value })}
-                className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md p-2 text-sm"
+                className="w-full bg-slate-50 dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 text-sm text-slate-900 dark:text-[#b9f2ff]"
                 disabled={isLoading}
               >
                 {videoStyles.map(style => (
@@ -263,11 +263,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs uppercase tracking-wider text-[#b9f2ff]/60 mb-1">Bối cảnh QG</label>
+                <label className="block text-xs uppercase tracking-wider text-slate-500 dark:text-[#b9f2ff]/60 mb-1">Bối cảnh QG</label>
                 <select
                   value={inputs.country}
                   onChange={(e) => onInputChange({ country: e.target.value })}
-                  className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md p-2 text-sm"
+                  className="w-full bg-slate-50 dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 text-sm text-slate-900 dark:text-[#b9f2ff]"
                   disabled={isLoading}
                 >
                   {countries.map(country => (
@@ -276,11 +276,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </select>
               </div>
               <div>
-                <label className="block text-xs uppercase tracking-wider text-[#b9f2ff]/60 mb-1">Ngôn ngữ thoại</label>
+                <label className="block text-xs uppercase tracking-wider text-slate-500 dark:text-[#b9f2ff]/60 mb-1">Ngôn ngữ thoại</label>
                 <select
                   value={inputs.languages}
                   onChange={(e) => onInputChange({ languages: e.target.value })}
-                  className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md p-2 text-sm"
+                  className="w-full bg-slate-50 dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 text-sm text-slate-900 dark:text-[#b9f2ff]"
                   disabled={isLoading || inputs.noDialogue}
                 >
                   {languagesList.map(lang => (
@@ -291,11 +291,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
 
             <div>
-                <label className="block text-xs uppercase tracking-wider text-[#b9f2ff]/60 mb-1">Giọng Vùng Miền (Accent)</label>
+                <label className="block text-xs uppercase tracking-wider text-slate-500 dark:text-[#b9f2ff]/60 mb-1">Giọng Vùng Miền (Accent)</label>
                 <select
                     value={inputs.accent}
                     onChange={(e) => onInputChange({ accent: e.target.value })}
-                    className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md p-2 text-sm"
+                    className="w-full bg-slate-50 dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 text-sm text-slate-900 dark:text-[#b9f2ff]"
                     disabled={isLoading || inputs.noDialogue || inputs.languages !== 'Tiếng Việt'}
                 >
                     {accents.map(acc => (
@@ -306,17 +306,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
 
           {/* Section: Toggles */}
-          <div className="space-y-3 border-t border-[#b9f2ff]/10 pt-4">
+          <div className="space-y-3 border-t border-slate-200 dark:border-[#b9f2ff]/10 pt-4">
             <div className="flex items-center space-x-2">
               <input
                 type="checkbox"
                 id="autoSplit"
                 checked={inputs.autoSplit}
                 onChange={(e) => onInputChange({ autoSplit: e.target.checked })}
-                className="rounded border-[#b9f2ff]/20 bg-[#0d0d0d] text-[#b9f2ff] focus:ring-0 focus:ring-offset-0"
+                className="rounded border-slate-300 dark:border-[#b9f2ff]/20 bg-white dark:bg-[#0d0d0d] text-sky-500 dark:text-[#b9f2ff] focus:ring-0 focus:ring-offset-0"
                 disabled={isLoading}
               />
-              <label htmlFor="autoSplit" className="text-sm text-[#b9f2ff]/80 select-none cursor-pointer">Tự động phân chia cảnh logic</label>
+              <label htmlFor="autoSplit" className="text-sm text-slate-700 dark:text-[#b9f2ff]/80 select-none cursor-pointer">Tự động phân chia cảnh logic</label>
             </div>
             <div className="flex items-center space-x-2">
                <input
@@ -324,10 +324,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   id="noSinging"
                   checked={inputs.noSinging}
                   onChange={(e) => onInputChange({ noSinging: e.target.checked })}
-                  className="rounded border-[#b9f2ff]/20 bg-[#0d0d0d] text-[#b9f2ff] focus:ring-0 focus:ring-offset-0"
+                  className="rounded border-slate-300 dark:border-[#b9f2ff]/20 bg-white dark:bg-[#0d0d0d] text-sky-500 dark:text-[#b9f2ff] focus:ring-0 focus:ring-offset-0"
                   disabled={isLoading}
                />
-               <label htmlFor="noSinging" className="text-sm text-[#b9f2ff]/80 select-none cursor-pointer">Cấm hát (Chỉ thoại thường)</label>
+               <label htmlFor="noSinging" className="text-sm text-slate-700 dark:text-[#b9f2ff]/80 select-none cursor-pointer">Cấm hát (Chỉ thoại thường)</label>
             </div>
              <div className="flex items-center space-x-2">
                 <input
@@ -335,10 +335,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     id="fullDialogue"
                     checked={inputs.fullDialogue}
                     onChange={handleFullDialogueChange}
-                    className="rounded border-[#b9f2ff]/20 bg-[#0d0d0d] text-[#b9f2ff] focus:ring-0 focus:ring-offset-0"
+                    className="rounded border-slate-300 dark:border-[#b9f2ff]/20 bg-white dark:bg-[#0d0d0d] text-sky-500 dark:text-[#b9f2ff] focus:ring-0 focus:ring-offset-0"
                     disabled={isLoading || inputs.noDialogue}
                 />
-                <label htmlFor="fullDialogue" className="text-sm text-[#b9f2ff]/80 select-none cursor-pointer">Chế độ Thoại Nhiều (Full Dialogue)</label>
+                <label htmlFor="fullDialogue" className="text-sm text-slate-700 dark:text-[#b9f2ff]/80 select-none cursor-pointer">Chế độ Thoại Nhiều (Full Dialogue)</label>
             </div>
              <div className="flex items-center space-x-2">
                 <input
@@ -346,15 +346,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     id="noDialogue"
                     checked={inputs.noDialogue}
                     onChange={handleNoDialogueChange}
-                    className="rounded border-[#b9f2ff]/20 bg-[#0d0d0d] text-[#b9f2ff] focus:ring-0 focus:ring-offset-0"
+                    className="rounded border-slate-300 dark:border-[#b9f2ff]/20 bg-white dark:bg-[#0d0d0d] text-sky-500 dark:text-[#b9f2ff] focus:ring-0 focus:ring-offset-0"
                     disabled={isLoading}
                 />
-                <label htmlFor="noDialogue" className="text-sm text-[#b9f2ff]/80 select-none cursor-pointer">Không có hội thoại (Chỉ hình ảnh)</label>
+                <label htmlFor="noDialogue" className="text-sm text-slate-700 dark:text-[#b9f2ff]/80 select-none cursor-pointer">Không có hội thoại (Chỉ hình ảnh)</label>
             </div>
           </div>
 
           {/* Section: Character Manager */}
-          <div className="border-t border-[#b9f2ff]/10 pt-4">
+          <div className="border-t border-slate-200 dark:border-[#b9f2ff]/10 pt-4">
             <CharacterManager 
               profiles={inputs.characterProfiles} 
               onProfilesChange={(profiles) => onInputChange({ characterProfiles: profiles })}
@@ -367,11 +367,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               type="submit"
               disabled={isLoading || !inputs.description.trim()}
-              className="w-full bg-[#b9f2ff] text-[#0d0d0d] font-bold text-lg py-3 px-6 rounded-lg shadow-[0_0_15px_rgba(185,242,255,0.3)] hover:shadow-[0_0_25px_rgba(185,242,255,0.5)] hover:bg-white transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none uppercase tracking-wide font-orbitron"
+              className="w-full bg-sky-500 hover:bg-sky-600 text-white dark:bg-[#b9f2ff] dark:text-[#0d0d0d] font-bold text-lg py-3 px-6 rounded-lg shadow-md dark:shadow-[0_0_15px_rgba(185,242,255,0.3)] dark:hover:shadow-[0_0_25px_rgba(185,242,255,0.5)] dark:hover:bg-white transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none uppercase tracking-wide font-orbitron"
             >
               {isLoading ? (
                 <span className="flex items-center justify-center space-x-2">
-                  <span className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#0d0d0d]"></span>
+                  <span className="animate-spin rounded-full h-5 w-5 border-b-2 border-white dark:border-[#0d0d0d]"></span>
                   <span>Đang xử lý...</span>
                 </span>
               ) : (
@@ -381,7 +381,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
           
            {/* History Panel - Moved to bottom as requested */}
-           <div className="border-t-2 border-[#b9f2ff]/10 pt-6">
+           <div className="border-t-2 border-slate-200 dark:border-[#b9f2ff]/10 pt-6">
             <HistoryPanel 
                 history={history}
                 onLoad={onLoadHistory}

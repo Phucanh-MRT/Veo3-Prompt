@@ -145,6 +145,7 @@ export const generateCinematicPrompts = async ({
   }
   
   const baseConstraints = [
+    `0. SCENE 1 STRATEGY - THE "HOOK": Scene 1 is the most important scene. It MUST be a "Hook Scene". Do not simply start with a boring establishing shot. Start with something visually striking, mysterious, high-energy, or emotionally resonant to immediately grab the viewer's curiosity and attention. For Scene 1 ONLY, prefix the 'shortDescription' field with "HOOK: ".`,
     `1.  Timing: Each scene prompt MUST be designed for an 8-second video clip. The amount of dialogue and action must be realistically achievable in 8 seconds.`,
     `2.  Video Style: The overall aesthetic MUST be '${videoStyle}'. IMPORTANT: If the style is provided with a translation (e.g., 'Điện ảnh (Cinematic)'), you MUST use the English term ('Cinematic') in your descriptions and in the 'videoStyle' field. Every single generated scene must reflect this style.`,
     `3.  Country Context: Tailor the content, visuals, and any subtle references to be engaging for an audience in: ${country}.`,
@@ -309,6 +310,11 @@ ${previousScenes.map(s => `- Scene ${s.sceneNumber} Characters: ${s.characterDes
 - CRITICAL: Adhere to all overall settings, including the Accent, No-Singing Enforcement, and Full Dialogue Mode rules if they are active.
 ${formInputs.videoStyle === 'ASMR (Autonomous Sensory Meridian Response)' ? `- ASMR STYLE ENFORCEMENT: The 'music' field MUST be 'N/A' or describe complete silence. The audio should consist exclusively of environmental sounds, whispering, or gentle, detailed sounds (triggers). No musical score is allowed.` : ''}
 - Ensure your new version maintains continuity with the potential overall story.`;
+
+  // Add specific Hook instruction for Scene 1 rewrite
+  if (sceneToRewrite.sceneNumber === 1) {
+    userPrompt += `\n- SCENE 1 CONSTRAINT: As this is the opening scene, it must function as a 'HOOK'. Ensure the rewritten version maintains or enhances the element of curiosity and visual impact to grab the audience immediately.`;
+  }
 
   const imageParts: { inlineData: { data: string; mimeType: string; } }[] = [];
   const charactersWithImages = formInputs.characterProfiles.filter(p => p.image && p.name);

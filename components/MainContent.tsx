@@ -61,9 +61,9 @@ export const MainContent: React.FC<MainContentProps> = ({ scenes, isLoading, err
 
     if (error) {
       return (
-        <div className="text-center p-8 bg-red-900/20 border border-red-500 rounded-lg">
-          <h3 className="text-xl font-orbitron text-red-400 mb-2">Đã xảy ra lỗi</h3>
-          <p className="text-red-300">{error}</p>
+        <div className="text-center p-8 bg-red-100 dark:bg-red-900/20 border border-red-500 rounded-lg">
+          <h3 className="text-xl font-orbitron text-red-600 dark:text-red-400 mb-2">Đã xảy ra lỗi</h3>
+          <p className="text-red-500 dark:text-red-300">{error}</p>
         </div>
       );
     }
@@ -74,14 +74,14 @@ export const MainContent: React.FC<MainContentProps> = ({ scenes, isLoading, err
           <div className="mb-6 flex justify-end gap-3 flex-wrap">
             <button
               onClick={handleCopyAllVideo}
-              className="px-4 py-2 rounded-lg text-sm font-semibold flex items-center space-x-2 bg-[#1a1a40]/50 hover:bg-[#b9f2ff] hover:text-[#0d0d0d] transition-all duration-300 border border-[#b9f2ff]/20 shadow-md hover:shadow-[#b9f2ff]/10"
+              className="px-4 py-2 rounded-lg text-sm font-semibold flex items-center space-x-2 bg-white dark:bg-[#1a1a40]/50 hover:bg-sky-100 dark:hover:bg-[#b9f2ff] text-slate-700 dark:text-[#b9f2ff] hover:text-slate-900 dark:hover:text-[#0d0d0d] transition-all duration-300 border border-slate-200 dark:border-[#b9f2ff]/20 shadow-sm dark:shadow-md"
             >
               <VideoIcon className="w-4 h-4" />
               <span>{videoCopied ? 'Đã sao chép Video!' : 'Copy Video Prompts'}</span>
             </button>
              <button
               onClick={handleCopyAllImage}
-              className="px-4 py-2 rounded-lg text-sm font-semibold flex items-center space-x-2 bg-[#1a1a40]/50 hover:bg-[#b9f2ff] hover:text-[#0d0d0d] transition-all duration-300 border border-[#b9f2ff]/20 shadow-md hover:shadow-[#b9f2ff]/10"
+              className="px-4 py-2 rounded-lg text-sm font-semibold flex items-center space-x-2 bg-white dark:bg-[#1a1a40]/50 hover:bg-sky-100 dark:hover:bg-[#b9f2ff] text-slate-700 dark:text-[#b9f2ff] hover:text-slate-900 dark:hover:text-[#0d0d0d] transition-all duration-300 border border-slate-200 dark:border-[#b9f2ff]/20 shadow-sm dark:shadow-md"
             >
               <ImageIcon className="w-4 h-4" />
               <span>{imageCopied ? 'Đã sao chép Ảnh!' : 'Copy Image Prompts'}</span>
@@ -107,9 +107,9 @@ export const MainContent: React.FC<MainContentProps> = ({ scenes, isLoading, err
     }
 
     return (
-      <div className="text-center py-20 px-8 border-2 border-dashed border-[#1a1a40] rounded-lg">
-        <h2 className="text-3xl font-anton uppercase tracking-wide text-[#b9f2ff]/80">Chào mừng đến với Ghế Đạo diễn</h2>
-        <p className="mt-4 text-[#b9f2ff]/60 max-w-xl mx-auto">
+      <div className="text-center py-20 px-8 border-2 border-dashed border-slate-300 dark:border-[#1a1a40] rounded-lg bg-white/50 dark:bg-transparent">
+        <h2 className="text-3xl font-anton uppercase tracking-wide text-slate-800 dark:text-[#b9f2ff]/80">Chào mừng đến với Ghế Đạo diễn</h2>
+        <p className="mt-4 text-slate-600 dark:text-[#b9f2ff]/60 max-w-xl mx-auto">
           Mô tả ý tưởng video của bạn ở thanh bên để bắt đầu tạo các gợi ý VEO 3 chi tiết, mang tính điện ảnh. Đội ngũ làm phim AI của bạn đang sẵn sàng.
         </p>
       </div>

@@ -31,37 +31,37 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({ history, onLoad, onD
         <button
             type="button"
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="w-full flex justify-between items-center p-3 bg-[#0d0d0d]/30 border border-[#b9f2ff]/10 rounded-t-lg"
+            className="w-full flex justify-between items-center p-3 bg-slate-100 dark:bg-[#0d0d0d]/30 border border-slate-200 dark:border-[#b9f2ff]/10 rounded-t-lg transition-colors"
             aria-expanded={!isCollapsed}
         >
             <div className="flex items-center space-x-2">
-                <HistoryIcon className="w-5 h-5 text-[#b9f2ff]/80" />
-                <h3 className="text-base font-anton uppercase tracking-wider text-[#b9f2ff]/80">Lịch sử</h3>
+                <HistoryIcon className="w-5 h-5 text-slate-600 dark:text-[#b9f2ff]/80" />
+                <h3 className="text-base font-anton uppercase tracking-wider text-slate-600 dark:text-[#b9f2ff]/80">Lịch sử</h3>
             </div>
-            {isCollapsed ? <ChevronDownIcon className="w-5 h-5 text-[#b9f2ff]/60" /> : <ChevronUpIcon className="w-5 h-5 text-[#b9f2ff]/60" />}
+            {isCollapsed ? <ChevronDownIcon className="w-5 h-5 text-slate-400 dark:text-[#b9f2ff]/60" /> : <ChevronUpIcon className="w-5 h-5 text-slate-400 dark:text-[#b9f2ff]/60" />}
         </button>
         
-        <div className={`transition-all duration-300 ease-in-out grid overflow-hidden bg-[#0d0d0d]/30 border-x border-b border-[#b9f2ff]/10 ${isCollapsed ? 'grid-rows-[0] opacity-0' : 'grid-rows-[1fr] opacity-100'}`}>
+        <div className={`transition-all duration-300 ease-in-out grid overflow-hidden bg-white/50 dark:bg-[#0d0d0d]/30 border-x border-b border-slate-200 dark:border-[#b9f2ff]/10 ${isCollapsed ? 'grid-rows-[0] opacity-0' : 'grid-rows-[1fr] opacity-100'}`}>
             <div className="min-h-0">
-                <div className="p-3 border-b border-[#b9f2ff]/10">
+                <div className="p-3 border-b border-slate-200 dark:border-[#b9f2ff]/10">
                     <input
                         type="text"
                         placeholder="Tìm kiếm lịch sử..."
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
                         disabled={disabled}
-                        className="w-full bg-[#0d0d0d] border border-[#b9f2ff]/20 rounded-md p-2 text-sm focus:ring-1 focus:ring-[#b9f2ff] focus:border-[#b9f2ff] transition-colors duration-300"
+                        className="w-full bg-white dark:bg-[#0d0d0d] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 text-sm text-slate-900 dark:text-[#b9f2ff] focus:ring-1 focus:ring-sky-400 dark:focus:ring-[#b9f2ff] focus:border-sky-400 dark:focus:border-[#b9f2ff] transition-colors duration-300"
                     />
                 </div>
-                <div className="p-3 space-y-2 max-h-48 overflow-y-auto">
+                <div className="p-3 space-y-2 max-h-48 overflow-y-auto custom-scrollbar">
                     {filteredHistory.length > 0 ? (
                         filteredHistory.map(item => {
                             // Safety check to prevent crash if inputs object is missing
                             if (!item.inputs) return null;
                             
                             return (
-                                <div key={item.id} className="group flex justify-between items-center p-2 rounded-md bg-[#0d0d0d]/50 hover:bg-[#b9f2ff]/10 transition-colors">
-                                    <p className="text-sm text-[#b9f2ff]/80 truncate flex-1 pr-2" title={item.inputs.description}>
+                                <div key={item.id} className="group flex justify-between items-center p-2 rounded-md bg-slate-100 dark:bg-[#0d0d0d]/50 hover:bg-sky-100 dark:hover:bg-[#b9f2ff]/10 transition-colors">
+                                    <p className="text-sm text-slate-700 dark:text-[#b9f2ff]/80 truncate flex-1 pr-2" title={item.inputs.description}>
                                         {item.inputs.description}
                                     </p>
                                     <div className="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -70,7 +70,7 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({ history, onLoad, onD
                                             onClick={() => onLoad(item)}
                                             disabled={disabled}
                                             title="Tải lại gợi ý này"
-                                            className="p-1.5 rounded-full hover:bg-[#b9f2ff] hover:text-[#0d0d0d] disabled:opacity-50"
+                                            className="p-1.5 rounded-full hover:bg-sky-400 hover:text-white dark:hover:bg-[#b9f2ff] dark:hover:text-[#0d0d0d] disabled:opacity-50 text-slate-500 dark:text-[#b9f2ff]"
                                         >
                                             <RefreshCwIcon className="w-4 h-4" />
                                         </button>
@@ -79,7 +79,7 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({ history, onLoad, onD
                                             onClick={() => onDelete(item.id)}
                                             disabled={disabled}
                                             title="Xóa gợi ý này"
-                                            className="p-1.5 rounded-full hover:bg-red-500/20 text-red-400 disabled:opacity-50"
+                                            className="p-1.5 rounded-full hover:bg-red-500/20 text-red-500 dark:text-red-400 disabled:opacity-50"
                                         >
                                             <TrashIcon className="w-4 h-4" />
                                         </button>
@@ -88,17 +88,17 @@ export const HistoryPanel: React.FC<HistoryPanelProps> = ({ history, onLoad, onD
                             );
                         })
                     ) : (
-                         <p className="text-center text-sm text-[#b9f2ff]/60 py-4">
+                         <p className="text-center text-sm text-slate-400 dark:text-[#b9f2ff]/60 py-4">
                             Không tìm thấy kết quả.
                         </p>
                     )}
                 </div>
-                <div className="p-3 border-t border-[#b9f2ff]/10">
+                <div className="p-3 border-t border-slate-200 dark:border-[#b9f2ff]/10">
                     <button
                         type="button"
                         onClick={onClear}
                         disabled={disabled}
-                        className="w-full text-xs text-center text-red-400/70 hover:text-red-400 hover:bg-red-500/10 p-2 rounded-md transition-colors disabled:opacity-50"
+                        className="w-full text-xs text-center text-red-500/70 dark:text-red-400/70 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-500/10 p-2 rounded-md transition-colors disabled:opacity-50"
                     >
                         Xóa toàn bộ lịch sử
                     </button>

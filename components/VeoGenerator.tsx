@@ -97,13 +97,13 @@ export const VeoGenerator: React.FC<VeoGeneratorProps> = ({ scene }) => {
 
   if (videoUrl) {
     return (
-        <div className="mt-4 p-4 border-t border-[#b9f2ff]/10">
-            <h4 className="text-lg font-orbitron mb-2">Video đã tạo</h4>
-            <video controls src={videoUrl} className="w-full rounded-lg" />
+        <div className="mt-4 p-4 border-t border-slate-200 dark:border-[#b9f2ff]/10">
+            <h4 className="text-lg font-orbitron mb-2 text-slate-900 dark:text-white">Video đã tạo</h4>
+            <video controls src={videoUrl} className="w-full rounded-lg shadow-md" />
             <button
                 onClick={handleGenerate}
                 disabled={isGenerating}
-                className="w-full mt-4 text-sm bg-transparent border border-[#b9f2ff]/30 rounded-md p-2 hover:bg-[#b9f2ff]/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300 flex items-center justify-center space-x-2"
+                className="w-full mt-4 text-sm bg-transparent border border-slate-300 dark:border-[#b9f2ff]/30 rounded-md p-2 hover:bg-slate-100 dark:hover:bg-[#b9f2ff]/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300 flex items-center justify-center space-x-2 text-slate-700 dark:text-[#b9f2ff]"
             >
                 <VideoIcon className="w-4 h-4" />
                 <span>Tạo lại Video</span>
@@ -114,24 +114,24 @@ export const VeoGenerator: React.FC<VeoGeneratorProps> = ({ scene }) => {
 
   if (isGenerating) {
     return (
-        <div className="mt-4 p-4 text-center border-t border-[#b9f2ff]/10">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#b9f2ff] mx-auto mb-3"></div>
-            <p className="text-sm text-[#b9f2ff]/80 transition-opacity duration-500">{loadingMessage}</p>
+        <div className="mt-4 p-4 text-center border-t border-slate-200 dark:border-[#b9f2ff]/10">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sky-500 dark:border-[#b9f2ff] mx-auto mb-3"></div>
+            <p className="text-sm text-slate-600 dark:text-[#b9f2ff]/80 transition-opacity duration-500">{loadingMessage}</p>
         </div>
     );
   }
   
   return (
-    <div className="mt-4 p-4 border-t border-[#b9f2ff]/10">
-      {error && <p className="text-red-400 text-sm mb-3 text-center">{error}</p>}
+    <div className="mt-4 p-4 border-t border-slate-200 dark:border-[#b9f2ff]/10">
+      {error && <p className="text-red-500 dark:text-red-400 text-sm mb-3 text-center">{error}</p>}
       
       {isCheckingApiKey ? (
-        <div className="text-center text-sm text-[#b9f2ff]/60">Đang kiểm tra API key...</div>
+        <div className="text-center text-sm text-slate-500 dark:text-[#b9f2ff]/60">Đang kiểm tra API key...</div>
       ) : apiKeySelected ? (
         <button
           onClick={handleGenerate}
           disabled={isGenerating}
-          className="w-full bg-[#1a1a40] border border-[#b9f2ff]/20 rounded-md p-2 text-sm hover:bg-[#b9f2ff]/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300 flex items-center justify-center space-x-2"
+          className="w-full bg-slate-100 dark:bg-[#1a1a40] border border-slate-300 dark:border-[#b9f2ff]/20 rounded-md p-2 text-sm hover:bg-sky-50 hover:text-sky-700 dark:hover:bg-[#b9f2ff]/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-300 flex items-center justify-center space-x-2 text-slate-700 dark:text-white"
         >
           <VideoIcon className="w-5 h-5" />
           <span>Tạo Video với VEO 3.1 Fast</span>
@@ -140,17 +140,17 @@ export const VeoGenerator: React.FC<VeoGeneratorProps> = ({ scene }) => {
         <div className="text-center">
             <button
                 onClick={handleSelectKey}
-                className="w-full bg-[#b9f2ff] text-[#0d0d0d] font-bold py-2 px-4 rounded-lg hover:bg-white transition-colors duration-300"
+                className="w-full bg-sky-500 dark:bg-[#b9f2ff] text-white dark:text-[#0d0d0d] font-bold py-2 px-4 rounded-lg hover:bg-sky-600 dark:hover:bg-white transition-colors duration-300"
             >
                 Chọn API Key để tạo Video
             </button>
-            <p className="text-xs text-[#b9f2ff]/60 mt-2">
+            <p className="text-xs text-slate-500 dark:text-[#b9f2ff]/60 mt-2">
                 Việc tạo video yêu cầu API key của riêng bạn.
                 <a 
                     href="https://ai.google.dev/gemini-api/docs/billing" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="underline hover:text-white"
+                    className="underline hover:text-sky-600 dark:hover:text-white"
                 >
                     Tìm hiểu về thanh toán
                 </a>.
