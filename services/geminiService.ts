@@ -1,4 +1,4 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@google/generative-ai";
 import { Scene, RewriteAction, CharacterProfile, FormInputs } from '../types';
 
 const LOCAL_STORAGE_KEY_API = 'VEO_API_KEY';
