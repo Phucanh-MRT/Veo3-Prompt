@@ -1,4 +1,4 @@
-import { GoogleGenAI, Type } from "@google/generative-ai";
+import { GoogleGenerativeAI, Part } from "@google/generative-ai";
 import { Scene, RewriteAction, CharacterProfile, FormInputs } from '../types';
 
 const LOCAL_STORAGE_KEY_API = 'VEO_API_KEY';
@@ -12,7 +12,7 @@ const getApiKey = (): string => {
 
   // 2. Fallback to Environment Variable
   if (process.env.API_KEY) {
-    return process.env.API_KEY;
+    return import.meta.env.VITE_GEMINI_API_KEY;
   }
 
   // 3. Throw specific error if neither exists
@@ -20,7 +20,7 @@ const getApiKey = (): string => {
 };
 
 const getGenAI = () => {
-  return new GoogleGenAI({ apiKey: getApiKey() });
+  return new GoogleGenerativeAI(apiKey);
 };
 
 const PREHISTORIC_STYLE = "Phim tài liệu điện ảnh về thời tiền sử (Cinematic Prehistoric Documentary)";
